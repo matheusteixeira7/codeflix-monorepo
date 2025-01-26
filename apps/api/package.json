@@ -15,7 +15,7 @@
     "billing:db:migrate": "drizzle-kit migrate --config database/billing/drizzle/drizzle-migration.config.ts",
     "billing:db:push": "drizzle-kit push --config database/billing/drizzle/drizzle-migration.config.ts",
     "billing:db:drop": "drizzle-kit drop --config database/billing/drizzle/drizzle-migration.config.ts",
-    "db:setup": "yarn content-management:db:migrate && yarn identity:db:migrate && yarn content-streaming:db:setup && yarn billing:db:migrate",
+    "db:setup": "pnpm content-management:db:migrate && pnpm identity:db:migrate && pnpm content-streaming:db:setup && pnpm billing:db:migrate",
     "docker:stop": "docker-compose stop",
     "docker:up": "docker-compose up --detach",
     "format": "prettier --write 'src/**/*.ts' 'test/**/*.ts' './*.{js,json}'",
@@ -36,7 +36,8 @@
     "test:integration:watch": "npm run test:integration -- --watch",
     "test:type": "tsc --noEmit",
     "test:unit": "jest --config ./test/jest.unit.ts",
-    "test:unit:watch": "npm run test:unit -- --watch"
+    "test:unit:watch": "npm run test:unit -- --watch",
+    "clean": "rm -rf dist"
   },
   "engines": {
     "npm": "please-use-npm",
@@ -58,9 +59,11 @@
     "@nestjs/typeorm": "^10.0.1",
     "@prisma/client": "^5.21.1",
     "aws-sdk": "^2.1555.0",
+    "axios": "^1.7.9",
     "bcrypt": "^5.1.1",
     "class-transformer": "^0.5.1",
     "class-validator": "^0.14.0",
+    "dotenv": "^16.4.7",
     "drizzle-orm": "^0.35.3",
     "eslint-plugin-no-relative-import-paths": "^1.5.2",
     "fs-extra": "^11.1.1",

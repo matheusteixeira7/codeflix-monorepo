@@ -19,9 +19,8 @@
       "cache": false,
       "persistent": true
     },
-    "clear": {
-      "cache": false,
-      "persistent": false
+    "clean": {
+      "cache": false
     }
   }
 }
