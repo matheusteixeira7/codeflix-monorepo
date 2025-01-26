@@ -1,0 +1,21 @@
+version: '3.8'
+
+name: 'codeflix'
+
+services:
+  postgres:
+    image: postgres:15-alpine
+    container_name: codeflix-db
+    environment:
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=postgres
+    ports:
+      - '5432:5432'
+    volumes:
+      - .data:/var/lib/postgresql/data
+  dynamodb:
+    image: localstack/localstack
+    ports:
+      - '4566:4566' # Use port 4566 for both DynamoDB and S3
+    environment:
+      - SERVICES=dynamodb
